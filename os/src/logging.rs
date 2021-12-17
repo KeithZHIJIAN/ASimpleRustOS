@@ -40,17 +40,7 @@ pub fn print(args: fmt::Arguments) {
     MyStdout.write_fmt(args).unwrap();
 }
 
-
-
-
-
-
-
-
 //logging functionality
-
-
-
 pub fn get_max_level() -> Level {
     match option_env!("LOG") {
         Some("error") => Level::Error,
