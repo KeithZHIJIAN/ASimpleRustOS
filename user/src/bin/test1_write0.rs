@@ -37,13 +37,13 @@ pub fn main() -> i32 {
     let (bottom, top) = unsafe { stack_range() };
     assert_eq!(
         write(STDOUT, unsafe {
-            slice::from_raw_parts((top - 5) as *const _, 10)
+            slice::from_raw_parts((top) as *const _, 10)
         }),
         -1
     );
     assert_eq!(
         write(STDOUT, unsafe {
-            slice::from_raw_parts((bottom - 5) as *const _, 10)
+            slice::from_raw_parts((bottom) as *const _, 10)
         }),
         -1
     );

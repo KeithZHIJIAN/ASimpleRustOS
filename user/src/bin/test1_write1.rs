@@ -14,7 +14,9 @@ const DATA_STRING: &str = "string from data section\n";
 
 #[no_mangle]
 pub fn main() -> i32 {
+    println!("This is write1.");
     assert_eq!(write(1234, DATA_STRING.as_bytes()), -1);
+    println!("1234");
     assert_eq!(
         write(STDOUT, DATA_STRING.as_bytes()),
         DATA_STRING.len() as isize

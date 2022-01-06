@@ -24,6 +24,7 @@ const MOD: u32 = 10007;
 
 #[no_mangle]
 fn main() -> i32 {
+    println!("Let's do some calculation!");
     let mut pow = [0u32; SIZE];
     let mut index: usize = 0;
     pow[index] = 1;

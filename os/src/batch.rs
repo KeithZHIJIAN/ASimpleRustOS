@@ -80,6 +80,12 @@ impl AppManager {
     pub fn move_to_next_app(&mut self) {
         self.current_app += 1;
     }
+
+    pub fn get_boundary(&self) -> (usize, usize) {
+        let current_app_id = self.get_current_app();
+        let app_len = self.app_start[current_app_id] - self.app_start[current_app_id-1];
+        (APP_BASE_ADDRESS, APP_BASE_ADDRESS + app_len)
+    }
 }
 
 lazy_static! {
@@ -106,6 +112,14 @@ pub fn init() {
 
 pub fn print_app_info() {
     APP_MANAGER.exclusive_access().print_app_info();
+}
+
+pub fn get_app_boundary() -> (usize, usize) {
+    APP_MANAGER.exclusive_access().get_boundary()
+}
+
+pub fn get_user_sp() -> usize {
+    USER_STACK.get_sp()
 }
 
 pub fn run_next_app() -> ! {
